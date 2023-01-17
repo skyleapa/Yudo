@@ -1,3 +1,3 @@
 # nwHacks2023
 
-future winner
+guys remember to do ```npm i``` before starting up the server
