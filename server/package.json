@@ -3,7 +3,7 @@
     "express": "^4.18.2"
   },
   "scripts": {
-    "start": "nodaemon start index.js",
-    "stop": "nodaemon stop index.js"
+    "start": "nodemon index.js",
+    "stop": "nodemon index.js"
   }
 }
