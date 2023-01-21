@@ -6,7 +6,8 @@ const Nodes = (ctx, pose) => {
     ctx.strokeStyle = 'white';
     
     ctx.lineWidth = 5;
-    const facePoints = ['nose', 'left_eye', 'right_eye', 'left_ear', 'right_ear'];
+    const facePoints = ['nose', 'left_eye', 'right_eye', 'left_ear', 'right_ear', "mouth_left", "mouth_right", "right_eye_outer", "right_eye_inner", "left_eye_outer", "left_eye_inner"];
+    const floorPoints = ['right_foot_index', 'left_foot_index', 'left_elbow', 'right_elbow'];
     const scoreThreshold = 0.9;
 
     function drawLine(ctx, pointA, pointB) {
@@ -59,23 +60,38 @@ const Nodes = (ctx, pose) => {
         if (points.get('right_shoulder').isDrawn && points.get('right_hip').isDrawn) {
             drawLine(ctx, points.get('right_shoulder'), points.get('right_hip'));
         }
-        
+
         // right leg
         drawLine(ctx, points.get('right_hip'), points.get('right_knee'));
         drawLine(ctx, points.get('right_knee'), points.get('right_ankle'));
 
         function drawPoint(ctx, point, showLabels, showFacePoints) {
-            if (point.score >= scoreThreshold &&
-                 (!facePoints.includes(point.name))) {
+            if (point.score >= scoreThreshold) {
                 point.isDrawn = true;
-                ctx.fillStyle = '#74C5A3';
-                ctx.strokeStyle = '#74C5A3';
-                ctx.beginPath();
-                ctx.arc(point.x, point.y, 10, 0, 2 * Math.PI);
-                ctx.stroke();
-                ctx.closePath();
-                ctx.fillStyle = 'white';
-                ctx.strokeStyle = 'white';
+                
+                if (floorPoints.includes(point.name)) {
+                    ctx.fillStyle = 'red';
+                    ctx.strokeStyle = 'red';
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 20, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.closePath();
+                    ctx.fillStyle = 'white';
+                    ctx.strokeStyle = 'white';
+                }
+                else if (!facePoints.includes(point.name)) {
+                    
+                    ctx.fillStyle = '#74C5A3';
+                    ctx.strokeStyle = '#74C5A3';
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 10, 0, 2 * Math.PI);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.closePath();
+                    ctx.fillStyle = 'white';
+                    ctx.strokeStyle = 'white';
+                }
+
                 if (showLabels) {
                     ctx.fillText(point.name, point.x, point.y);
                 }
