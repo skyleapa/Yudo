@@ -1,5 +1,5 @@
 import "./App.css";
-import TensorFlowComponent from "./components/TensorFlowComponent";
+import TensorFlowComponent from "./components/tensorflow/TensorFlowComponent";
 
 function App() {
   return (
