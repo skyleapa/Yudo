@@ -1,12 +1,11 @@
 import "./App.css";
+import TensorFlowComponent from "./components/TensorFlowComponent";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          <h1>buttholes</h1>
-        </p>
+        <TensorFlowComponent />
         peepeepoopoo
       </header>
     </div>
