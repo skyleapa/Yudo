@@ -2,60 +2,60 @@ import { Pose } from '@tensorflow-models/pose-detection';
 
 
 const Nodes = (ctx, pose) => {
+    ctx.fillStyle = 'red';
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+
+    function drawLine(ctx, pointA, pointB) {
+        if (pointA && pointB) { 
+          ctx.beginPath();
+          ctx.moveTo(pointA.x, pointA.y);
+          ctx.lineTo(pointB.x, pointB.y);
+          ctx.stroke();
+          ctx.closePath();
+        }
+    }
+
     if (ctx) {
-        const leftEye = pose.keypoints.find((keypoint) => keypoint.name === 'left_eye');
-        const rightEye = pose.keypoints.find((keypoint) => keypoint.name == 'right_eye');
-        const leftMouth = pose.keypoints.find((keypoint) => keypoint.name === 'mouth_left');
-        const rightMouth = pose.keypoints.find((keypoint) => keypoint.name === 'mouth_right');
-        const nose = pose.keypoints.find((keypoint) => keypoint.name === 'nose');
-
-        let bodyParts = {
-            leftToe: pose.keypoints.find((keypoint) => keypoint.name === 'left_foot_index'),
-            rightToe: pose.keypoints.find((keypoint) => keypoint.name == 'right_foot_index'),
-            leftAnkle: pose.keypoints.find((keypoint) => keypoint.name === 'left_ankle'),
-            rightAnkle: pose.keypoints.find((keypoint) => keypoint.name === 'right_ankle'),
-            leftKnee: pose.keypoints.find((keypoint) => keypoint.name === 'left_knee'),
-            rightKnee: pose.keypoints.find((keypoint) => keypoint.name === 'right_knee'),
-            leftHip: pose.keypoints.find((keypoint) => keypoint.name === 'left_knee'),
-            rightHip: pose.keypoints.find((keypoint) => keypoint.name === 'right_knee'),
-            leftShoulder: pose.keypoints.find((keypoint) => keypoint.name === 'left_shoulder'),
-            rightShoulder: pose.keypoints.find((keypoint) => keypoint.name === 'right_shoulder'),
-            leftElbow: pose.keypoints.find((keypoint) => keypoint.name === 'left_elbow'),
-            rightElbow: pose.keypoints.find((keypoint) => keypoint.name === 'right_elbow')
-        };
-
-        ctx.fillStyle = 'red';
-        ctx.strokeStyle = 'red';
-        ctx.lineWidth = 5;
+        const points = new Map();
+        pose.keypoints.map(point => points.set(point.name, point));
+        pose.keypoints.forEach(point => drawPoint(ctx, point, false, true));
         
-        for (const [key, value] of Object.entries(bodyParts)) {
-            if (value) {
-                ctx.beginPath();
-                ctx.arc(value.x - 10, value.y - 10, 10, 0, 2 * Math.PI);
-                ctx.fill();
-            }
-        }
-        if (leftEye) {
-            ctx.beginPath();
-            ctx.arc(leftEye.x - 10, leftEye.y - 10, 10, 0, 2 * Math.PI);
-            ctx.fill();
-        }
-        if (rightEye) {
-            ctx.beginPath();
-            ctx.arc(rightEye.x - 10, rightEye.y - 10, 10, 0, 2 * Math.PI);
-            ctx.fill();
-        }
-        if (nose) {
-            ctx.beginPath();
-            ctx.arc(nose.x - 10, nose.y - 10, 10, 0, 2 * Math.PI);
-            ctx.fill();
-        }
+        drawLine(ctx, points.get('left_shoulder'), points.get('right_shoulder'));
+        drawLine(ctx, points.get('left_hip'), points.get('right_hip'));
+    
+        // left arm
+        drawLine(ctx, points.get('left_shoulder'), points.get('left_elbow'));
+        drawLine(ctx, points.get('left_elbow'), points.get('left_wrist'));
+        
+        // left side
+        drawLine(ctx, points.get('left_shoulder'), points.get('left_hip'));
+        
+        // left leg
+        drawLine(ctx, points.get('left_hip'), points.get('left_knee'));
+        drawLine(ctx, points.get('left_knee'), points.get('left_ankle'));
 
-        if (leftMouth && rightMouth) {
-            ctx.beginPath();
-            ctx.moveTo(leftMouth.x, leftMouth.y);
-            ctx.lineTo(rightMouth.x, rightMouth.y);
-            ctx.stroke();
+        // right arm
+        drawLine(ctx, points.get('right_shoulder'), points.get('right_elbow'));
+        drawLine(ctx, points.get('right_elbow'), points.get('right_wrist'));
+
+        // right side
+        drawLine(ctx, points.get('right_shoulder'), points.get('right_hip'));
+        
+        // right leg
+        drawLine(ctx, points.get('right_hip'), points.get('right_knee'));
+        drawLine(ctx, points.get('right_knee'), points.get('right_ankle'));
+
+        function drawPoint(ctx, point, showLabels, showFacePoints) {
+            if (showFacePoints) {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.closePath();
+                if (showLabels) {
+                    ctx.fillText(point.name, point.x, point.y);
+                }
+            }
         }
     }
 }

@@ -1,7 +1,15 @@
-#webCamVideo {
-    position: absolute;
+.container {
+    position: relative;
+    width: 640px;
+    height: 480px;
 }
 
 #canvasRef {
     position: absolute;
+    top: 0;
+    left: 0;
+}
+
+button {
+    z-index: 9;
 }

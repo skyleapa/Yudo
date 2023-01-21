@@ -2,7 +2,7 @@ import * as poseDetection from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
 import React, { useState, useRef } from 'react';
 import Nodes from './Nodes';
-//import './CameraStyle.css';
+import "./CameraStyle.css";
 
 const TensorFlowComponent = () => {
 
@@ -70,16 +70,17 @@ const TensorFlowComponent = () => {
 
         render();
     };
-
     return (
+        <>
         <div className="container">
 	        <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
             <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
-	        <button
-	            onClick={startStream}>
-	            Start webcam
-	        </button>
         </div>
+        <button
+	        onClick={startStream}>
+	        Start webcam
+	    </button>
+        </>
     );
 }
 
