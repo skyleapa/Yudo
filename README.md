@@ -1,5 +1,7 @@
 # nwHacks2023
 
+Presenting Yudo! Our approach to innovating exercise with technology.
+
 Guys when u clone this do the following:
 1. ```npm i``` in the server and client folders to install dependencies
 2. ```npm install -g nodemon``` to install nodemon, a module that automatically restarts the backend whenever it detects a change
