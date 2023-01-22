@@ -1,7 +1,6 @@
 import "./App.css";
 import TensorFlowComponent from "./components/tensorflow/TensorFlowComponent";
-import { BrowserRouter as Router, Route, Link, Routes} 
-        from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import LandingPage from "./components/ui/LandingPage";
 import Exercises from "./components/ui/Exercises";
 import Workouts from "./components/ui/Workouts";
@@ -20,7 +19,6 @@ function App() {
               </Routes>
             </header>
       </Router>
-      
     </div>
   );
 }
