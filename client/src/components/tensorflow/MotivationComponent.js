@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import { useNavigate } from 'react-router-dom';
 import './config';
+import speakerphone from './../ui/images/speakerphone.png';
+import head from './../ui/images/head.png';
+import './../ui/LivePage.css';
 
 const MotivationComponent = (parentScore) => {
     let [insultText, setInsultText] = useState("");
@@ -38,16 +41,25 @@ const MotivationComponent = (parentScore) => {
         
         console.log("Average is " + average)
 
-        handleClick();
     }
     
     return (
         <>
-            <p>ChatGPT-3 motivation: {insultText} </p>
-            <button onClick={() => {
+            <div className="icons">
+                <img class="head-lp" src={head} />
+                <img class="speakerphone-lp" src={speakerphone} />
+
+                <div class="primary-button-container-lp">
+                <button class="primary-button-lp">
+                    <div class="primary-button-div-lp">Test {insultText}</div>
+                </button>
+                </div>
+                <button class="" onClick={() => {
                 onFinish()}}>
                 Get Results
-            </button>
+                </button>
+            </div>
+            
         </>
     );
 }

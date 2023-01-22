@@ -1,16 +1,23 @@
 .tensorflow-container {
   background-color: #398163;
   width: 700px;
-  height: 400px;
+  height: 490px;
   padding-left: 1.5%;
   padding-top: 1%;
   border-radius: 10px;
+  margin-top: 100px;
+  margin-left: 230px;
 }
-/* 
+
 .LivePage {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-} */
+  align-items: center;
+}
+
+.help {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .begin-button-lp {
   background-color: #0f0f0f;
@@ -32,7 +39,7 @@
 
 .key-buttons-lp {
   display: inline-block;
-  align-items: center;
+  align-items: bottom;
 }
 
 .header-lp {
@@ -52,22 +59,22 @@
   justify-content: center;
 }
 
-.modified-container-lp {
+/* .modified-container-lp {
   position: relative;
   display: block;
   left: 5px;
   width: 200px;
-  height: 300px;
+  height: 60px;
   margin-top: -150px;
   padding: 30px;
   background-color: #398163;
   border-radius: 5px;
   box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
-}
+} */
 
 .modified-button-lp {
   display: block;
-  height: 350px;
+  height: 100px;
   width: 250px;
   background-color: #74c5a3;
   border: solid #74c5a3;
@@ -80,8 +87,10 @@
   transition: transform 0.15s;
   transition: background-color 0.15s;
   font-family: Numans;
-  text-align: left;
+  text-align: center;
   border-radius: 5px;
+  margin-top: 50px;
+  margin-left: 470px;
 }
 
 .dot {
@@ -95,7 +104,8 @@
 .icons {
   display: flex;
   align-items: center;
-  margin-left: 50px;
+  margin-top: 50px;
+  margin-left: 100px;
 }
 
 .head-lp {

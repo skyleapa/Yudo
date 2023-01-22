@@ -85,10 +85,17 @@ const TensorFlowComponent = () => {
                     <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
                     <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
                 </div>
-                <button onClick={() => startStream()}>
+            </div>
+        
+            <div class="modified-container-lp">
+            <button class="modified-button-lp">
+            <div class="title-description-dp">
+              Score: {score}
+            </div>
+            <button onClick={() => startStream()}>
                     Start webcam
-                </button>
-                Current Score: {score}
+            </button>
+            </button>
             </div>
             <MotivationComponent parentScore={score} scoreArray={scoreArray} />
         </>

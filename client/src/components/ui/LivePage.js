@@ -10,54 +10,16 @@ import head from "./images/head.png";
 export default function LivePage() {
   return (
     <div>
-      <div>
+      <div class="help">
       <div class="header-lp">
-        Live
-        {/* <span class="dot">Live</span> */}
-
+        
         </div>
-{/* 
-          <div className="LivePage">
-            <TensorFlowComponent />
 
-            <div class="modified-container-lp">
-              <button class="modified-button-lp">
-                <div class="title-description-dp">
-                  Score: 95%
-                </div>
-              </button>
-            </div>
-          </div> 
-        </div>
-        */}
-
-
-      <div class="middle-lp">
         <div>
           <div className="LivePage">
             <TensorFlowComponent />
           </div>
         </div>
-        
-        <div class="modified-container-lp">
-          <button class="modified-button-lp">
-            <div class="title-description-dp">
-              Score: 95%
-            </div>
-          </button>
-        </div>
-      </div>
-
-      <div className="icons">
-        <img class="head-lp" src={head} />
-        <img class="speakerphone-lp" src={speakerphone} />
-
-        <div class="primary-button-container-lp">
-          <button class="primary-button-lp">
-            <div class="primary-button-div-lp">"Keep Your Hips Up More!"</div>
-          </button>
-        </div>
-      </div>
 
       <div class="key-buttons-dp">
         <Link to="/demopage">
