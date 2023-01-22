@@ -17,7 +17,7 @@ const MotivationComponent = (parentScore) => {
     return (
         <>
             <p>Current motivation: {insultText} </p>
-            Timer: <Countdown date={Date.now() + 30000} onComplete={() => {getInsultOrComp(0.5)}}/>
+            Timer: <Countdown date={Date.now() + 30000} onComplete={() => {getInsultOrComp(0.5)}} />
             <button onClick={() => {
                 getInsultOrComp(parentScore)}}>
                 Get Insult
