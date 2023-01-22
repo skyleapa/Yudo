@@ -18,7 +18,7 @@ export default function DemoPage() {
           <button class="modified-button-dp">
             <div class="title-description-dp">
               <p class="title-dp">Plank Tips</p>
-              <ul class="ul-dp">
+              <ul class="ul-dp-div">
                 <li class="ul-dp">Butt Down</li>
                 <li class="ul-dp">Core Tight</li>
                 <li class="ul-dp">Straight Line</li>

@@ -20,7 +20,7 @@ export default function WorkoutList() {
           <div class="modified-container-wol">
             <button class="modified-button-wol">
               <div>
-                <ul class="ul-wol">
+                <ul class="ul-wol-div">
                   <li class="ul-wol">30 minutes</li>
                   <li class="ul-wol">20 second breaks</li>
                   <li class="ul-wol">15 exercises</li>
