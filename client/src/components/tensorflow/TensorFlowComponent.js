@@ -50,16 +50,15 @@ const TensorFlowComponent = () => {
     const startStream = async () => {
         await startVideoStream();
         const poseDetector = await startPoseDetection();
-
-
+        
         const render = async () => {
             const poses = await poseDetector.estimatePoses(webcamVideo.current);
             const ctx = canvasRef.current.getContext("2d");
             ctx.canvas.width = videoWidth;
             ctx.canvas.height = videoHeight;
-            
-            console.log(poses);
-            
+            let normalizedKeys = poseDetection.calculators.keypointsToNormalizedKeypoints(poses, webcamVideo.current);
+
+            console.log(normalizedKeys);
             ctx.clearRect(0, 0, 640, 480);
 
             if (poses[0]) {

@@ -5,6 +5,7 @@
 
 .App {
   text-align: center;
+  font-family: Numans;
 }
 
 .App-header {
@@ -29,6 +30,35 @@
 }
 
 #navigationBar h1 {
-    position: inherit;
-    top:1%;
+  position: inherit;
+  top:1%;
+  left: 42px;
+  font-size: 28px;
+}
+
+#navigationBar img {
+  position: inherit;
+  width: 50px;
+  top: 15%;
+  left: 124px;
+}
+
+#navigationBar a {
+  font-size: 22px;
+  padding-right: 30px;
+}
+
+#navigationBar .options {
+  top: 33%;
+  position: inherit;
+  right: 5%;
+}
+
+a {
+  text-decoration: none !important;
+  color: white;
+}
+
+a:hover {
+  color: red !important;
 }

@@ -9,16 +9,16 @@ import NavigationBar from "./components/ui/NavigationBar";
 function App() {
   return (
     <div className="App">
-      <NavigationBar />
-      <header className="App-header">
-        <Router>
-          <Routes>
-            <Route exact path="landing" element={<LandingPage />} />
-            <Route exact path="/" element={<Workouts />} />
-            <Route exact path="exercises" element={<Exercises />} />
-          </Routes>
-        </Router>
-      </header>
+      <Router>
+            <NavigationBar />   
+            <header className="App-header">
+              <Routes>
+                  <Route exact path="/" element={<LandingPage />} />
+                  <Route exact path="workouts" element={<Workouts />} />
+                  <Route exact path="exercises" element={<Exercises />} />
+              </Routes>
+            </header>
+      </Router>
     </div>
   );
 }
