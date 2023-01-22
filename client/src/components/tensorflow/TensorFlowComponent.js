@@ -9,6 +9,7 @@ import MotivationComponent from './MotivationComponent';
 const TensorFlowComponent = () => {
     const [stream, setStream] = useState(null);
     const [score, setScore] = useState(null);
+    const [scoreArray, setScoreArray] = useState([]);
     
     const webcamVideo = useRef();
     const canvasRef = useRef();
@@ -61,7 +62,9 @@ const TensorFlowComponent = () => {
 
             //console.log(poses[0]);
             if (normalizedKeys[0]) {
-                setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
+                const streamScore = ScoringComponent(normalizedKeys[0]);
+                setScore(streamScore.toFixed(2));
+                setScoreArray((prevScoreArray) => [...prevScoreArray, streamScore])
                 // console.log(normalizedKeys[0])
             }
             ctx.clearRect(0, 0, 640, 480);
@@ -87,7 +90,7 @@ const TensorFlowComponent = () => {
                 </button>
                 Current Score: {score}
             </div>
-            <MotivationComponent parentScore={score} />
+            <MotivationComponent parentScore={score} scoreArray={scoreArray} />
         </>
     );
 }
