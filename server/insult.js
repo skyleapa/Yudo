@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -10,7 +10,7 @@ async function insult(score) {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt:
-      "State an insult or a compliment for a person doing a plank exercise, based on how close the following percentage is to 100%. If the person has a percentage above 50%, compliment them. If they have a low percentage, insult them:\"" + score + "\"",
+      "State an insult or a compliment for a person doing a plank exercise, based on how close the following percentage is to 100%. If the person has a percentage above 50%, compliment them. If they have a low percentage, insult them:\"" + String(score) + "%\"",
     temperature: 0.43,
     max_tokens: 256,
     top_p: 1,

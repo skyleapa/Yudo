@@ -6,6 +6,7 @@ import LandingPage from "./components/ui/LandingPage";
 import Exercises from "./components/ui/Exercises";
 import Workouts from "./components/ui/Workouts";
 import NavigationBar from "./components/ui/NavigationBar";
+import LivePage from "./components/ui/LivePage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <NavigationBar />   
             <header className="App-header">
               <Routes>
-                  <Route exact path="/" element={<LandingPage />} />
+                  <Route exact path="/" element={<LivePage />} />
                   <Route exact path="workouts" element={<Workouts />} />
                   <Route exact path="exercises" element={<Exercises />} />
               </Routes>

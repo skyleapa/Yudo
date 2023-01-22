@@ -3,7 +3,7 @@ const { insult } = require("./insult.js");
 
 const app = express();
 const router = express.Router();
-
+ 
 app.use(express.json());
 app.use(express.static(__dirname + "/app")); 
 

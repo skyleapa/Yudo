@@ -8,6 +8,7 @@ const TensorFlowComponent = () => {
 
     // controls the current stream value
     const [stream, setStream] = useState(null);
+
     const webcamVideo = useRef();
     const canvasRef = useRef();
 
@@ -16,7 +17,6 @@ const TensorFlowComponent = () => {
 
     const startVideoStream = async () => {
         try {
-
             let newStream = await navigator.mediaDevices
                 .getUserMedia({
                 video: {
@@ -75,8 +75,7 @@ const TensorFlowComponent = () => {
 	        <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
             <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
         </div>
-        <button
-	        onClick={startStream}>
+        <button onClick={startStream}>
 	        Start webcam
 	    </button>
         </>
