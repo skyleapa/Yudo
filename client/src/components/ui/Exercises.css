@@ -1,4 +1,4 @@
-.header {
+.header-e {
   font-family: Numans;
   color: #ffffff;
   text-align: left;
@@ -6,20 +6,20 @@
   padding: 20px;
 }
 
-.primary-button-container {
+.primary-button-container-e {
   position: relative;
   display: block;
   left: 5px;
   width: 1110px;
   height: 25px;
   margin-top: 30px;
-  padding: 40px;
+  padding: 30px;
   background-color: #398163;
   border-radius: 5px;
   box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
 }
 
-.primary-button {
+.primary-button-e {
   display: block;
   height: 81px;
   width: 1164px;
@@ -27,7 +27,7 @@
   border: solid #74c5a3;
   border-width: 0 10px;
   color: #ffffff;
-  font-size: 50px;
+  font-size: 20px;
   margin: -37px 0px -25px -37px;
   padding: 15px;
   padding-left: 10px;
@@ -38,11 +38,11 @@
   border-radius: 5px;
 }
 
-.primary-button-container:hover {
+.primary-button-container-e:hover {
   background-color: #bfe1c1;
 }
 
-.primary-button:active {
+.primary-button-e:active {
   transform: translateY(8px) translateX(9px);
 }
 
@@ -50,7 +50,8 @@ button:focus {
   outline: none;
 }
 
-.primary-button-div {
+.primary-button-div-e {
   display: grid;
   align-items: center;
+  font-size: 25px;
 }

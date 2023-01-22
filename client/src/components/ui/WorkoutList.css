@@ -1,4 +1,4 @@
-.header {
+.header-wol {
   font-family: Numans;
   color: #ffffff;
   text-align: left;
@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-.primary-button-container {
+.primary-button-container-wol {
   position: relative;
   display: block;
   left: 5px;
@@ -19,7 +19,7 @@
   box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
 }
 
-.primary-button {
+.primary-button-wol {
   display: block;
   height: 81px;
   width: 1164px;
@@ -38,27 +38,102 @@
   border-radius: 5px;
 }
 
-.primary-button-container:hover {
-  background-color: #bfe1c1;
-}
-
-.primary-button:active {
-  transform: translateY(8px) translateX(9px);
-}
-
-button:focus {
-  outline: none;
-}
-
-.primary-button-div {
+.primary-button-div-wol {
   display: grid;
-  grid-template-columns: 380px 40px;
+  grid-template-columns: 500px 50px;
   align-items: center;
+  font-size: 25px;
 }
 
-.poses {
+.poses-wol {
   object-fit: cover;
   float: right;
   width: 40px;
-  margin-left: 710px;
+}
+
+.main-div-wol {
+  display: grid;
+  grid-template-columns: 800px 1fr;
+  justify-content: center;
+  align-items: center;
+  /* padding-right: 100px;
+  padding-left: 100px; */
+}
+
+.header-wol {
+  display: inline-block;
+  text-align: left;
+  width: 780px;
+  margin-bottom: 0;
+}
+
+.description-wol {
+  display: inline-block;
+  text-align: left;
+  width: 780px;
+  font-size: 30px;
+}
+
+.modified-button-wol {
+  display: block;
+  height: 200px;
+  width: 350px;
+  background-color: #74c5a3;
+  border: solid #74c5a3;
+  border-width: 0 10px;
+  color: #ffffff;
+  font-size: 20px;
+  margin: -37px 0px -25px -37px;
+  padding: 15px;
+  padding-left: 10px;
+  transition: transform 0.15s;
+  transition: background-color 0.15s;
+  font-family: Numans;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.modified-container-wol {
+  position: relative;
+  display: block;
+  left: 5px;
+  width: 300px;
+  height: 150px;
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #398163;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
+}
+
+.primary-buttons-wol {
+  margin-bottom: 50px;
+}
+
+.key-buttons-wol {
+  display: inline-block;
+  align-items: center;
+}
+
+.begin-button-wol {
+  background-color: #0f0f0f;
+  color: #74c5a3;
+  border: 2px solid #74c5a3; /* Green */
+  border-radius: 10px;
+  width: 180px;
+  height: 55px;
+  font-size: 30px;
+  font-family: Numans;
+  transition-duration: 0.3s;
+  margin: 0px 50px 50px 0px;
+}
+
+.begin-button-wol:hover {
+  background-color: #74c5a3; /* Green */
+  color: white;
+}
+
+.ul-wol {
+  font-family: Numans;
+  font-size: 25px;
 }

@@ -18,17 +18,17 @@ export default function LandingPage() {
   };
 
   return (
-    <div class="main-div" style={styles.body}>
-      <div class="header-div">
-        <h1 class="header">Your fitness journey starts here.</h1>
-        <p class="description">Innovating exercise with technology.</p>
+    <div class="main-div-lp" style={styles.body}>
+      <div class="header-div-lp">
+        <h1 class="header-lp">Your fitness journey starts here.</h1>
+        <p class="description-lp">Innovating exercise with technology.</p>
         <Link to="/workouts">
-          <button class="begin-button">begin</button>
+          <button class="begin-button-lp">begin</button>
         </Link>
       </div>
 
       <div>
-        <img class="yudo" src={icon} />
+        <img class="yudo-lp" src={icon} />
       </div>
     </div>
   );
