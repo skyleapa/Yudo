@@ -3,11 +3,13 @@ import '@tensorflow/tfjs-backend-webgl';
 import React, { useState, useRef } from 'react';
 import Nodes from './Nodes';
 import "./CameraStyle.css";
+import ScoringComponent from './ScoringComponent';
 
 const TensorFlowComponent = () => {
 
     // controls the current stream value
     const [stream, setStream] = useState(null);
+    const [score, setScore] = useState(null);
 
     const webcamVideo = useRef();
     const canvasRef = useRef();
@@ -58,7 +60,10 @@ const TensorFlowComponent = () => {
             ctx.canvas.height = videoHeight;
             let normalizedKeys = poseDetection.calculators.keypointsToNormalizedKeypoints(poses, webcamVideo.current);
 
-            console.log(normalizedKeys);
+            //console.log(poses[0]);
+            if (normalizedKeys[0]) {
+                setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
+            }
             ctx.clearRect(0, 0, 640, 480);
 
             if (poses[0]) {
@@ -66,18 +71,20 @@ const TensorFlowComponent = () => {
             }    
             requestAnimationFrame(render);
         }
-
+        
         render();
     };
+
     return (
         <>
         <div className="container">
 	        <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
             <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
         </div>
-        <button onClick={startStream}>
+        <button onClick={() => startStream()}>
 	        Start webcam
 	    </button>
+        Current Score: {score}
         </>
     );
 }
