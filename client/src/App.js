@@ -16,7 +16,7 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
-            {/* <Route exact path="live" element={<LivePage />} */}
+            <Route exact path="LivePage" element={<LivePage />} />
             <Route exact path="workouts" element={<Workouts />} />
             <Route exact path="workoutlists" element={<WorkoutList />} />
             <Route exact path="exercises" element={<Exercises />} />
