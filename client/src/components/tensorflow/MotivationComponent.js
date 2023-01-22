@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useRef, useEffect } from 'react';
-import UseInterval from './UseInterval';
+import ReactDOM from 'react-dom';
+import Countdown from 'react-countdown';
+import { useContext } from "react";
 
 const MotivationComponent = () => {
     let [insultText, setInsultText] = useState(null);
@@ -16,8 +18,8 @@ const MotivationComponent = () => {
     
     return (
         <>
-            Current motivation: {insultText}
-            Timer: {count}
+            <p>Current motivation: {insultText} </p>
+            Timer: <Countdown date={Date.now() + 30000} onComplete={() => {getInsultOrComp(0.5)}}/>
             <button onClick={() => {
                 getInsultOrComp(0.5)}}>
                 Get Insult

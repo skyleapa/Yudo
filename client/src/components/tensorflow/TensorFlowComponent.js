@@ -1,16 +1,14 @@
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import Nodes from './Nodes';
 import "./CameraStyle.css";
 import ScoringComponent from './ScoringComponent';
 
 const TensorFlowComponent = () => {
-
-    // controls the current stream value
     const [stream, setStream] = useState(null);
     const [score, setScore] = useState(null);
-
+    
     const webcamVideo = useRef();
     const canvasRef = useRef();
 
@@ -63,6 +61,7 @@ const TensorFlowComponent = () => {
             //console.log(poses[0]);
             if (normalizedKeys[0]) {
                 setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
+                console.log(normalizedKeys[0])
             }
             ctx.clearRect(0, 0, 640, 480);
 
