@@ -20,8 +20,6 @@ const ScoringComponent = (live) => {
             baseSlope = -1 * baseSlope
         } 
 
-        // console.log(x1, y1, x2, y2, baseSlope)
-
         const A = baseSlope * (x2 - x1)
         const B = Math.sqrt(Math.pow((y2 - y1), 2) + Math.pow((x2 - x1), 2))
         const a1 = Math.atan((y2 - y1) / (x2 - x1))
@@ -32,7 +30,6 @@ const ScoringComponent = (live) => {
         const D = Math.sin(a4) * (B / (Math.sin(90 * (Math.PI) / 180)))
 
         const relativeSlope = C / D
-        // console.log(relativeSlope)
         return relativeSlope
     }
 
@@ -79,14 +76,13 @@ const ScoringComponent = (live) => {
             const rightFootIndexDemo = (demo.keypoints[32], live.keypoints[32])
 
             const [s1, s2, s3] = findSlopes(rightElbowDemo, rightShoulderDemo, rightHipDemo, rightKneeDemo, rightAnkleDemo, rightFootIndexDemo)
-            // console.log(s1, s2, s3)
+
             slope1 += s1
             slope2 += s2
             slope3 += s3
         }
 
         const res = [(slope1 / dataSet.length), (slope2 / dataSet.length), (slope3 / dataSet.length)]
-        // console.log(res)
         return res;
     }
 
@@ -117,11 +113,35 @@ const ScoringComponent = (live) => {
         const rightY = rightPosition.y
 
         const distance = Math.sqrt(Math.pow((rightX - leftX), 2) + Math.pow((rightY - leftY), 2))
+
+        // ADJUST
         if (distance > 80) {
             return 0
         } else {
             return 100 - distance
         }
+    }
+
+    // ensures that all values are relatively in a plank position, otherwise decrease score significantly
+    function ensureRelativePositioning(rightPositions) {
+
+        // only gets right positions
+        for (let i = 0; i < rightPositions.length - 1; i++) {
+            if (calculateXDistance(rightPosition[i], rightPosition[i + 1])) {
+                continue
+            } else {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    function calculateXDistance(rightPos1, rightPos2) {
+        const xDistance = rightPos2 - rightPos1
+
+        // ADJUST
+        return xDistance < 70 ? false : true
     }
 
     // demoSlopes: an array containing the three ideal slopes of a plank
@@ -152,9 +172,11 @@ const ScoringComponent = (live) => {
 
         // might need to adjust
         if (linedUpValue < 50) {
-            finalScore = (averageBeforeLinedUp * 0.2) + (linedUpValue * 0.8)
+            finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
+        } else if (!ensureRelativePositioning) {
+            finalScore = (averageBeforeLinedUp * 0.3) + (Math.random() * 30 * 0.7)
         } else {
-            finalScore = (averageBeforeLinedUp * 0.8) + (linedUpValue * 0.2)
+            finalScore = (averageBeforeLinedUp * 0.9) + (linedUpValue * 0.1)
         }
 
         return finalScore
@@ -184,6 +206,7 @@ const ScoringComponent = (live) => {
         // For Testing Score Calculations
         const liveStats = findSlopes(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive);
         const linedUpValue = linedUp(allPositionData);
+        const relativePlankPositionValue = ensureRelativePositioning([rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive])
         const demoAverage = average(demoDataSet)
         console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
         return calculateScores(demoAverage, liveStats, linedUpValue);
