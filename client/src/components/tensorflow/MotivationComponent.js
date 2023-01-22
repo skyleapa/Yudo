@@ -51,7 +51,7 @@ const MotivationComponent = (parentScore) => {
 
                 <div class="primary-button-container-lp">
                 <button class="primary-button-lp">
-                    <div class="primary-button-div-lp">Test {insultText}</div>
+                    <div class="primary-button-div-lp">CHAT-GPT3 RESPONSE: {insultText}</div>
                 </button>
                 </div>
                 <button class="" onClick={() => {
