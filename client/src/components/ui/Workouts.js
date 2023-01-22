@@ -47,3 +47,7 @@ export default function Workouts() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a1a229b1aa24e77d98cce88536a9f715dcf1207
