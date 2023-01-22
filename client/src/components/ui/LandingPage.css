@@ -27,10 +27,19 @@
 }
 
 .begin-button {
-  background-color: #090909;
+  margin-left: 0;
+  background-color: #0f0f0f;
   color: #74c5a3;
   border: 2px solid #74c5a3; /* Green */
-  width: 50px;
-  height: 20px;
-  font-size: 100px;
+  border-radius: 10px;
+  width: 180px;
+  height: 55px;
+  font-size: 30px;
+  font-family: Numans;
+  transition-duration: 0.3s;
+}
+
+.begin-button:hover {
+  background-color: #74c5a3; /* Green */
+  color: white;
 }

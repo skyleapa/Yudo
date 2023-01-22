@@ -4,18 +4,21 @@ import full_body from "./images/full_body.png";
 import cardio from "./images/cardio.png";
 import upper_body from "./images/upper_body.png";
 import core from "./images/core.png";
+import { Link } from "react-router-dom";
 
 export default function Workouts() {
   return (
     <div>
       <div class="header">Workouts</div>
       <div class="primary-button-container">
-        <button class="primary-button">
-          <div class="primary-button-div">
-            Full Body - 45 minutes
-            <img class="poses" src={full_body} />
-          </div>
-        </button>
+        <Link to="/workoutlist">
+          <button class="primary-button">
+            <div class="primary-button-div">
+              Full Body - 45 minutes
+              <img class="poses" src={full_body} />
+            </div>
+          </button>
+        </Link>
       </div>
 
       <div class="primary-button-container">

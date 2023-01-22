@@ -21,7 +21,7 @@
 
 #navigationBar {
   width: 100%;
-  height: 70px;
+  height: 80px;
   background-color: black;
   position: absolute;
   z-index: 20;
@@ -51,7 +51,7 @@
 #navigationBar .options {
   top: 33%;
   position: inherit;
-  right: 5%;
+  right: 1%;
 }
 
 a {
