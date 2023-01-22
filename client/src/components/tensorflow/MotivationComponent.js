@@ -18,7 +18,8 @@ const MotivationComponent = () => {
     return (
         <>
             Current motivation: {insultText}
-            <button onClick={getInsultOrComp(0.5)}>
+            <button onClick={() => {
+                getInsultOrComp(0.5)}}>
                 Get Insult
             </button>
         </>
