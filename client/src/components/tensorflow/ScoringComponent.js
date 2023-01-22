@@ -154,11 +154,11 @@ const ScoringComponent = (live) => {
     function detectHipPosition(rightElbow, rightShoulder, rightHip, rightKnee, rightAnkle, rightFootIndex) {
 
         const hipY = height - rightHip.y
-        const footIndexScore = (height - hipY) - (height - rightFootIndex.y)
-        const ankleScore = (height - hipY) - (height - rightAnkle.y)
-        const kneeScore = (height - hipY) - (height - rightKnee.y)
-        const shoulderScore = (height - rightShoulder.y) - (height - hipY)
-        const elbowScore = (height - hipY) - (height - rightElbow.y)
+        const footIndexScore = hipY - (height - rightFootIndex.y)
+        const ankleScore = hipY - (height - rightAnkle.y)
+        const kneeScore = hipY - (height - rightKnee.y)
+        const shoulderScore = (height - rightShoulder.y) - hipY
+        const elbowScore = hipY - (height - rightElbow.y)
 
         // ADJUST
         // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
