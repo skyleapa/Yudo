@@ -59,8 +59,12 @@ export default function WorkoutList() {
       </div>
 
       <div class="key-buttons-wol">
-        <button class="begin-button-wol">back</button>
-        <button class="begin-button-wol">next</button>
+        <Link to="/workouts">
+          <button class="begin-button-wol">back</button>
+        </Link>
+        <Link to="/demopage">
+          <button class="begin-button-wol">next</button>
+        </Link>
       </div>
     </div>
   );
