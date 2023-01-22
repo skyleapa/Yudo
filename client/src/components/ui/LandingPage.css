@@ -1,0 +1,36 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  text-align: left;
+  width: 400px;
+  margin-bottom: 0;
+}
+
+.description {
+  color: white;
+  margin-top: 0;
+  font-size: 24px;
+  padding-left: 14px;
+  width: 370px;
+  text-align: left;
+}
+
+.yudo {
+  width: 360px;
+  margin: 0;
+  padding: 0;
+  align-items: left;
+}
+
+.begin-button {
+  background-color: #090909;
+  color: #74c5a3;
+  border: 2px solid #74c5a3; /* Green */
+  width: 50px;
+  height: 20px;
+  font-size: 100px;
+}
