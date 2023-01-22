@@ -220,12 +220,16 @@ const ScoringComponent = (live) => {
             finalScore = (averageBeforeLinedUp * 0.2) + (Math.random() * 30 * 0.8)
         } else if (hipScore === 0) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
+            console.log(0)
         } else if (hipScore === 1) {
             finalScore = (averageBeforeLinedUp * 0.4) + ((Math.random() * (50 - 30) + 30) * 0.6)
+            console.log(1)
         } else if (hipScore === 2) {
             finalScore = (averageBeforeLinedUp * 0.7) + ((Math.random() * (80 - 50) + 50) * 0.3)
+            console.log(2)
         } else {
             finalScore = (averageBeforeLinedUp * 0.95) + (linedUpValue * 0.05)
+            console.log(3)
         }
 
         return finalScore
