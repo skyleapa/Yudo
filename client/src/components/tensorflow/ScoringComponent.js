@@ -108,9 +108,9 @@ const ScoringComponent = (live) => {
     // takes two positions (left and right) and the x, y coords for both. calculates the distance between positions, and returns a linedUpValue from 1 - 100.
     function calculateXYDistance(leftPosition, rightPosition) {
         const leftX = leftPosition.x
-        const leftY = leftPosition.y
+        const leftY = height - leftPosition.y
         const rightX = rightPosition.x
-        const rightY = rightPosition.y
+        const rightY = height - rightPosition.y
 
         const distance = Math.sqrt(Math.pow((rightX - leftX), 2) + Math.pow((rightY - leftY), 2))
 
@@ -143,7 +143,7 @@ const ScoringComponent = (live) => {
         const xDistance = rightPos2 - rightPos1
 
         // ADJUST
-        return xDistance < 70 ? false : true
+        return (xDistance < 80) ? false : true
     }
 
     // return a score for the relative hip position
@@ -162,12 +162,11 @@ const ScoringComponent = (live) => {
 
         // ADJUST
         // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
-        if (footIndexScore < -50 || ankleScore < -50 || kneeScore < -50 || elbowScore < -20 || shoulderScore < -80 || shoulderScore > 85) {
-
+        if (footIndexScore < -20 || ankleScore < -20 || kneeScore < -30 || elbowScore < -10 || shoulderScore < -80 || shoulderScore > 80) {
             return 0
-        } else if (footIndexScore < -40 || ankleScore < -30 || kneeScore < -40 || elbowScore < -10 || shoulderScore < -65 || shoulderScore > 65) {                                                     
+        } else if (footIndexScore < -10 || ankleScore < -10 || kneeScore < -20 || elbowScore < 0 || shoulderScore < -65 || shoulderScore > 65) {                                                     
             return 1
-        } else if (footIndexScore < -30 || ankleScore < -10 || kneeScore < -30 || elbowScore < 0 || shoulderScore < -50 || shoulderScore > 50) {
+        } else if (footIndexScore < 0 || ankleScore < 0 || kneeScore < -10 || elbowScore < 10 || shoulderScore < -50 || shoulderScore > 50) {
             return 2
         } else {
             return 3
@@ -213,12 +212,12 @@ const ScoringComponent = (live) => {
         let finalScore = 0
 
         // ADJUST
-        if (outOfFrame > 5) {
+        if (outOfFrame > 6) {
             finalScore = (Math.random() * 20)
         } else if (linedUpValue < 50) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
         } else if (!ensureRelativePositioning(relativeRightPositions)) {
-            finalScore = (averageBeforeLinedUp * 0.2) + (Math.random() * 30 * 0.8)
+            finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
         } else if (hipScore === 0) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
             console.log(0)
