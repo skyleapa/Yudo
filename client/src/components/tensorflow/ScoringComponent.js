@@ -63,30 +63,7 @@ const ScoringComponent = (live) => {
         return slopes
     }
 
-    // demoSlopes: an array containing the three ideal slopes of a plank
-    // liveSlopes: an array containing the three slopes of the candidate
-    // CONSTRAINT: demoSlopes and liveSlopes must be the same length
-    // returns: a score based on how closely the live slopes match the demo slopes
-    function calculateScores(demoSlopes, liveSlopes) {
-
-        let percentageDifference = []
-        for (let i = 0; i < demoSlopes.length; i++) {
-            const demoSlope = demoSlopes[i]
-            const liveSlope = liveSlopes[i]
-            percentageDifference[i] = (Math.abs(demoSlope - liveSlope) / Math.abs(demoSlope)) * 3
-            if (percentageDifference [i] > 100) {
-                percentageDifference [i] = 100;
-            }
-        }
-
-        let score = 0
-        for (let i = 0; i < percentageDifference.length; i++) {
-            score += 100 - percentageDifference[i]
-        }
-
-        return score / percentageDifference.length
-    }
-
+    // calculates the average 3 slopes of a dataSet
     function average(dataSet) {
         let slope1 = 0
         let slope2 = 0
@@ -113,6 +90,76 @@ const ScoringComponent = (live) => {
         return res;
     }
 
+    // determines how close the user is to a plank position based on x, y positions of left and right parts
+    function linedUp(positionData) {
+        linedUpValue = [] // values from 100 - 0 representing how close the left and right points are (0 means not close at all)
+
+        for (let i = 0; i < 12; i += 2) {
+            if (positionData[i] && positionData[i + 1]) {
+                linedUpValue.push(calculateXYDistance(positionData[i], positionData[i + 1]))
+            } 
+        }
+
+        let score = 0
+        for (let i = 0; i < linedUpValue.length; i++) {
+            score += linedUpValue[i]
+        }
+
+        return score / linedUpValues.length
+    }
+
+    // takes two positions (left and right) and the x, y coords for both. calculates the distance between positions, and returns a linedUpValue from 1 - 100.
+    function linedUpValue(leftPosition, rightPosition) {
+        leftX = leftPosition.x
+        leftY = leftPosition.y
+        rightX = rightPosition.x
+        rightY = rightPosition.y
+
+        distance = Math.sqrt(Math.pow((rightX - leftX), 2) + Math.pow((rightY - leftY), 2))
+        if (distance > 80) {
+            return 0
+        } else {
+            return 100 - distance
+        }
+    }
+
+    // demoSlopes: an array containing the three ideal slopes of a plank
+    // liveSlopes: an array containing the three slopes of the candidate
+    // linedUpValue: a value that determines how lined up left and right positions are
+    // CONSTRAINT: demoSlopes and liveSlopes must be the same length
+    // returns: a score based on how closely the live slopes match the demo slopes
+    function calculateScores(demoSlopes, liveSlopes, linedUpValue) {
+
+        let percentageDifference = []
+        for (let i = 0; i < demoSlopes.length; i++) {
+            const demoSlope = demoSlopes[i]
+            const liveSlope = liveSlopes[i]
+            percentageDifference[i] = (Math.abs(demoSlope - liveSlope) / Math.abs(demoSlope)) * 3
+            if (percentageDifference [i] > 100) {
+                percentageDifference [i] = 100;
+            }
+        }
+
+        let score = 0
+        for (let i = 0; i < percentageDifference.length; i++) {
+            score += 100 - percentageDifference[i]
+        }
+
+        let averageBeforeLinedUp = score / percentageDifference.length
+
+        let finalScore = 0
+
+        // might need to adjust
+        if (linedUpValue < 50) {
+            finalScore = (averageBeforeLinedUp * 0.2) + (linedUpValue * 0.8)
+        } else {
+            finalScore = (averageBeforeLinedUp * 0.8) + (linedUpValue * 0.2)
+        }
+
+        return finalScore
+    }
+
+
 
     // Testing
 
@@ -130,15 +177,14 @@ const ScoringComponent = (live) => {
         const rightAnkleLive = (live.keypoints[28], live.keypoints[28])
         const leftFootIndexLive = (live.keypoints[31], live.keypoints[31])
         const rightFootIndexLive = (live.keypoints[32], live.keypoints[32])
+        const allPositionData = [leftElbowLive, rightElbowLive, leftShoulderLive, rightShoulderLive, leftHipLive, rightHipLive,     // contains 12 items
+            leftKneeLive, rightKneeLive, leftAnkleLive, rightAnkleLive, leftFootIndexLive, rightFootIndexLive]
 
         // For Testing Score Calculations
         const liveStats = findSlopes(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive);
-
-        // const demoStats = findSlopes(rightElbowDemo, rightShoulderDemo, rightHipDemo, rightKneeDemo, rightAnkleDemo, rightFootIndexDemo)
-        // console.log(liveStats)
+        const linedUpValue = linedUp(allPositionData);
         const demoAverage = average(demoDataSet)
-        // console.log(demoAverage)
-        console.log("The score is: " + calculateScores(demoAverage, liveStats))
+        console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
         return calculateScores(demoAverage, liveStats);
     }
 }
