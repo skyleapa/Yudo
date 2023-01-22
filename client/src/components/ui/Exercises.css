@@ -13,7 +13,7 @@
   width: 1110px;
   height: 25px;
   margin-top: 30px;
-  padding: 30px;
+  padding: 40px;
   background-color: #398163;
   border-radius: 5px;
   box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
@@ -27,7 +27,7 @@
   border: solid #74c5a3;
   border-width: 0 10px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 30px;
   margin: -37px 0px -25px -37px;
   padding: 15px;
   padding-left: 10px;
@@ -52,13 +52,5 @@ button:focus {
 
 .primary-button-div {
   display: grid;
-  grid-template-columns: 380px 40px;
   align-items: center;
-}
-
-.poses {
-  object-fit: cover;
-  float: right;
-  width: 40px;
-  margin-left: 710px;
 }

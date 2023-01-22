@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Numans;
-    src: url(fonts/Numans-Regular.ttf);
+  font-family: Numans;
+  src: url(fonts/Numans-Regular.ttf);
 }
 
 .App {
@@ -31,7 +31,7 @@
 
 #navigationBar h1 {
   position: inherit;
-  top:1%;
+  top: 1%;
   left: 42px;
   font-size: 28px;
 }
@@ -60,5 +60,5 @@ a {
 }
 
 a:hover {
-  color: red !important;
+  color: #74c5a3 !important;
 }
