@@ -16,8 +16,8 @@ export default function NavigationBar() {
         <a className="workout">
           <Link to="/workouts"> Workout</Link>
         </a>
-        <a className="about">
-          <Link to="/about">About</Link>
+        <a className="livepage">
+          <Link to="/LivePage">Live</Link>
         </a>
       </div>
     </div>
