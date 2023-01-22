@@ -126,11 +126,13 @@ const ScoringComponent = (live) => {
     function ensureRelativePositioning(rightPositions) {
 
         // only gets right positions
-        for (let i = 0; i < rightPositions.length - 1; i++) {
-            if (calculateXDistance(rightPositions[i], rightPositions[i + 1])) {
-                continue
-            } else {
-                return false
+        if (rightPositions) {
+            for (let i = 0; i < rightPositions.length - 1; i++) {
+                if (calculateXDistance(rightPositions[i], rightPositions[i + 1])) {
+                    continue
+                } else {
+                    return false
+                }
             }
         }
         return true

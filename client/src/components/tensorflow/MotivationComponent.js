@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useState, useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
-import { useContext } from "react";
 
 const MotivationComponent = (parentScore) => {
     let [insultText, setInsultText] = useState(null);
