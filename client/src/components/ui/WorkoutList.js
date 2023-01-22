@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 export default function WorkoutList() {
   return (
     <div>
-      {/* <h1 color="white">Hi</h1> */}
-
       <div class="header">Exercise Set</div>
       <div class="primary-button-container">
         <button class="primary-button">

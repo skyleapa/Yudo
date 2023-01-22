@@ -14,7 +14,6 @@ function App() {
       <Router>
         <NavigationBar />
         <header className="App-header">
-          7777777
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
             {/* <Route exact path="live" element={<LivePage />} */}
