@@ -12,8 +12,9 @@ router.get('/',function(req,res){
 });
 
 app.post("/ai-response", (req, res) => {
-    const score = req.body;
+    const score = JSON.stringify(req.body);
     insult(score).then((result) => {
+      console.log(`Recieved Score : ${score}`);
       console.log(`Sent out response: ${result}`);
       res.send(result);
     });

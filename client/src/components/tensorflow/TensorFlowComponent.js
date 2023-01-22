@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import Nodes from './Nodes';
 import "./CameraStyle.css";
 import ScoringComponent from './ScoringComponent';
+import MotivationComponent from './MotivationComponent';
 
 const TensorFlowComponent = () => {
     const [stream, setStream] = useState(null);
@@ -76,14 +77,17 @@ const TensorFlowComponent = () => {
 
     return (
         <>
-        <div className="container">
-	        <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
-            <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
-        </div>
-        <button onClick={() => startStream()}>
-	        Start webcam
-	    </button>
-        Current Score: {score}
+            <div className='tensorflow-container'>
+                <div className="container">
+                    <video ref={webcamVideo} id="webCamVideo" autoPlay playsInline></video>
+                    <canvas ref={canvasRef} id="canvasRef" width={videoWidth} height={videoHeight}/>
+                </div>
+                <button onClick={() => startStream()}>
+                    Start webcam
+                </button>
+                Current Score: {score}
+            </div>
+            <MotivationComponent parentScore={score} />
         </>
     );
 }
