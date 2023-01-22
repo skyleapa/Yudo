@@ -52,7 +52,7 @@
 
 .main-div-wol {
   display: grid;
-  grid-template-columns: 800px 1fr;
+  grid-template-columns: 550px 1fr;
   justify-content: center;
   align-items: center;
   /* padding-right: 100px;

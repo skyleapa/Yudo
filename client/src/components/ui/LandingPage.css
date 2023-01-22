@@ -1,16 +1,16 @@
-.main-div-lp {
+.main-div-lap {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.header-lp {
+.header-lap {
   text-align: left;
   width: 400px;
   margin-bottom: 0;
 }
 
-.description-lp {
+.description-lap {
   color: white;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -20,14 +20,14 @@
   text-align: left;
 }
 
-.yudo-lp {
+.yudo-lap {
   width: 360px;
   margin: 0;
   padding: 0;
   align-items: left;
 }
 
-.begin-button-lp {
+.begin-button-lap {
   margin-top: 10px;
   margin-left: -200px;
   background-color: #0f0f0f;
@@ -41,7 +41,7 @@
   transition-duration: 0.3s;
 }
 
-.begin-button-lp:hover {
+.begin-button-lap:hover {
   background-color: #74c5a3; /* Green */
   color: white;
 }

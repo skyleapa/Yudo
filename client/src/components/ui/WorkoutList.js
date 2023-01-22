@@ -11,7 +11,7 @@ export default function WorkoutList() {
             <p class="header-wol">Core Exercises</p>
           </div>
           <p class="description-wol">
-            Those abs are no longer just a dream. Focused to tone your abs and
+            Those abs are no longer just a dream. <br /> Focused to tone your abs and
             obliques.
           </p>
         </div>
