@@ -6,13 +6,6 @@ const MotivationComponent = () => {
     let [insultText, setInsultText] = useState(null);
     let [count, setCount] = useState(0);
     
-    const Counter = () => {
-        UseInterval(() => {
-            // Your custom logic here
-            setCount(count + 1);
-        }, 1000);
-    }
-
     const getInsultOrComp = (theScore) => {
         axios.post("http://localhost:5001/ai-response", theScore)
           .then((response) => {
