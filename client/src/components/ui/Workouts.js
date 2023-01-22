@@ -1,9 +1,49 @@
-import React from 'react'
-  
+import React from "react";
+import "./Workouts.css";
+
 export default function Workouts() {
-    return (
-        <div>
-            <h1>Test Landing Page</h1>
-        </div>
-    )
+  function panelButton() {
+    alert("test");
+  }
+
+  return (
+    <div>
+      <div class="header">Workouts</div>
+      <div class="primary-button-container">
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Full Body - 45 minutes, 9 exercises
+            <img src=""></img>
+          </div>
+        </button>
+      </div>
+
+      <div class="primary-button-container">
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Upper Body - 30 minutes, 6 exercises
+            <img src=""></img>
+          </div>
+        </button>
+      </div>
+
+      <div class="primary-button-container">
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Core - 30 minutes, 15 exercises
+            <img src=""></img>
+          </div>
+        </button>
+      </div>
+
+      <div class="primary-button-container">
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Cardio - 1 hour, 3 exercises
+            <img src=""></img>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
 }
