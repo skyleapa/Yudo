@@ -62,7 +62,7 @@ const TensorFlowComponent = () => {
             //console.log(poses[0]);
             if (normalizedKeys[0]) {
                 setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
-                console.log(normalizedKeys[0])
+                // console.log(normalizedKeys[0])
             }
             ctx.clearRect(0, 0, 640, 480);
 
