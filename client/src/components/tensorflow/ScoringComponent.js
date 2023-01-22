@@ -92,30 +92,31 @@ const ScoringComponent = (live) => {
 
     // determines how close the user is to a plank position based on x, y positions of left and right parts
     function linedUp(positionData) {
-        linedUpValue = [] // values from 100 - 0 representing how close the left and right points are (0 means not close at all)
+        let linedUpValues = [] // values from 100 - 0 representing how close the left and right points are (0 means not close at all)
 
         for (let i = 0; i < 12; i += 2) {
             if (positionData[i] && positionData[i + 1]) {
-                linedUpValue.push(calculateXYDistance(positionData[i], positionData[i + 1]))
+                linedUpValues.push(calculateXYDistance(positionData[i], positionData[i + 1]))
             } 
         }
 
         let score = 0
-        for (let i = 0; i < linedUpValue.length; i++) {
-            score += linedUpValue[i]
+        for (let i = 0; i < linedUpValues.length; i++) {
+            score += linedUpValues[i]
+            console.log(score)
         }
 
         return score / linedUpValues.length
     }
 
     // takes two positions (left and right) and the x, y coords for both. calculates the distance between positions, and returns a linedUpValue from 1 - 100.
-    function linedUpValue(leftPosition, rightPosition) {
-        leftX = leftPosition.x
-        leftY = leftPosition.y
-        rightX = rightPosition.x
-        rightY = rightPosition.y
+    function calculateXYDistance(leftPosition, rightPosition) {
+        const leftX = leftPosition.x
+        const leftY = leftPosition.y
+        const rightX = rightPosition.x
+        const rightY = rightPosition.y
 
-        distance = Math.sqrt(Math.pow((rightX - leftX), 2) + Math.pow((rightY - leftY), 2))
+        const distance = Math.sqrt(Math.pow((rightX - leftX), 2) + Math.pow((rightY - leftY), 2))
         if (distance > 80) {
             return 0
         } else {
@@ -185,7 +186,7 @@ const ScoringComponent = (live) => {
         const linedUpValue = linedUp(allPositionData);
         const demoAverage = average(demoDataSet)
         console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
-        return calculateScores(demoAverage, liveStats);
+        return calculateScores(demoAverage, liveStats, linedUpValue);
     }
 }
 

@@ -1,23 +1,30 @@
 import axios from "axios";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import UseInterval from './UseInterval';
 
 const MotivationComponent = () => {
-
     let [insultText, setInsultText] = useState(null);
+    let [count, setCount] = useState(0);
+    
+    const Counter = () => {
+        UseInterval(() => {
+            // Your custom logic here
+            setCount(count + 1);
+        }, 1000);
+    }
 
     const getInsultOrComp = (theScore) => {
-        let scorePercentage = theScore * 100;
-
-        axios.post("http://localhost:5001/ai-response", scorePercentage)
+        axios.post("http://localhost:5001/ai-response", theScore)
           .then((response) => {
             const result = response.data;
             setInsultText(result);
         });
     }
-
+    
     return (
         <>
             Current motivation: {insultText}
+            Timer: {count}
             <button onClick={() => {
                 getInsultOrComp(0.5)}}>
                 Get Insult
