@@ -99,7 +99,7 @@ const ScoringComponent = (live) => {
         let score = 0
         for (let i = 0; i < linedUpValues.length; i++) {
             score += linedUpValues[i]
-            console.log(score)
+            // console.log(score)
         }
 
         return score / linedUpValues.length
@@ -153,16 +153,17 @@ const ScoringComponent = (live) => {
     // 3: good
     function detectHipPosition(rightElbow, rightShoulder, rightHip, rightKnee, rightAnkle, rightFootIndex) {
 
-        const hipY = rightHip.y
-        const footIndexScore = hipY - rightFootIndex.y
-        const ankleScore = hipY - rightAnkle.y
-        const kneeScore = hipY - rightKnee.y
-        const shoulderScore = rightShoulder.y - hipY
-        const elbowScore = hipY - rightElbow.y
+        const hipY = height - rightHip.y
+        const footIndexScore = (height - hipY) - (height - rightFootIndex.y)
+        const ankleScore = (height - hipY) - (height - rightAnkle.y)
+        const kneeScore = (height - hipY) - (height - rightKnee.y)
+        const shoulderScore = (height - rightShoulder.y) - (height - hipY)
+        const elbowScore = (height - hipY) - (height - rightElbow.y)
 
         // ADJUST
         // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
         if (footIndexScore < -50 || ankleScore < -50 || kneeScore < -50 || elbowScore < -20 || shoulderScore < -80 || shoulderScore > 85) {
+
             return 0
         } else if (footIndexScore < -40 || ankleScore < -30 || kneeScore < -40 || elbowScore < -10 || shoulderScore < -65 || shoulderScore > 65) {                                                     
             return 1
@@ -262,7 +263,7 @@ const ScoringComponent = (live) => {
         const hipScore = detectHipPosition(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive)
         const demoAverage = average(demoDataSet)
         const outOfFrame = findOutOfFrame(allPositionData)
-        console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
+        // console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
         return calculateScores(demoAverage, liveStats, linedUpValue, hipScore, outOfFrame, relativeRightPositions)
     }
 }
