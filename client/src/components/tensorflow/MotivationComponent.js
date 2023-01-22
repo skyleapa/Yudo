@@ -4,10 +4,8 @@ import Countdown from 'react-countdown';
 import { useNavigate } from 'react-router-dom';
 import './config';
 
-const MotivationComponent = (parentScore, scoreArray) => {
-    let [insultText, setInsultText] = useState(null);
-    let [count, setCount] = useState(0);
-    const [secondsRemaining, setSecondsRemaining] = useState(30000)
+const MotivationComponent = (parentScore) => {
+    let [insultText, setInsultText] = useState("");
     const navigate = useNavigate();
     const handleClick = () => navigate('/endpage');
     const getInsultOrComp = (theScore) => {
@@ -15,65 +13,40 @@ const MotivationComponent = (parentScore, scoreArray) => {
           .then((response) => {
             const result = response.data;
             setInsultText(result);
-        });
+        })
     }
 
-    const hours = 0;
-    const minutes = 0;
-    const seconds = 60;
-    const [[hrs, mins, secs], setTime] = React.useState([0, 0, 30]);
-
-    const tick = () => {
-
-        if (hrs === 0 && mins === 0 && secs === 0) {
-            reset()
-        } else if (mins === 0 && secs === 0) {
-            setTime([hrs - 1, 59, 59]);
-        } else if (secs === 0) {
-            setTime([hrs, mins - 1, 59]);
-        } else {
-            setTime([hrs, mins, secs - 1]);
-        }
-    };
-
-    const reset = () => {
-        setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)])
-    };
-
-
-    React.useEffect(() => {
-        const timerId = setInterval(() => tick(), 1000);
-        return () => clearInterval(timerId);
-    });
-
-    // useEffect(() => {
-    //     const timerID = setInterval(() => setSecondsRemaining(prevSecondsRemaining => prevSecondsRemaining - 1000), 1000)
-    //     return () => clearInterval(timerID)
-    // }) 
+    useEffect(() => {
+        global.config.insult = "Test" + insultText;
+        console.log(insultText)
+    }, [insultText])
 
     function onFinish() {
         let sum = 0;
-        for (let i = 0; i < scoreArray.length; i++) {
-            sum += scoreArray[i]
-        }
-        const average = (sum / scoreArray.length).toFixed(2);
+        let average = 0;
+        // let finalArray = JSON.stringify(parentScore).scoreArray;
+
+        // if (finalArray.length !== 0) {
+        //     for (let i = 0; i < finalArray.length; i++) {
+        //         sum += finalArray[i]
+        //     }
+        //     average = (sum / finalArray.length).toFixed(2);
+        // }
+
+        // global.config.score = parentScore;
+        getInsultOrComp(parentScore);
         
-        global.config.score = 3000;
-        global.config.insult = getInsultOrComp(average);
+        console.log("Average is " + average)
+
+        handleClick();
     }
     
     return (
         <>
-            <p>Current motivation: {insultText} </p>
-            {/* Timer: <Countdown date={Date.now() + secondsRemaining} onComplete={() => {onFinish()}} /> */}
-            <div>
-                <p>{`${hrs.toString().padStart(2, '0')}:${mins
-                .toString()
-                .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> 
-            </div>
+            <p>ChatGPT-3 motivation: {insultText} </p>
             <button onClick={() => {
                 onFinish()}}>
-                Get Insult
+                Get Results
             </button>
         </>
     );
