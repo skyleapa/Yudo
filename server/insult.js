@@ -1,50 +1,23 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
 
-async function insult(keyword, array) {
+async function insult(score) {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt:
-      "if the following number is " +
-      keyword +
-      "': '" +
-      stringer(array) +
-      "'. Return the average of these values.",
+      "State an insult or a compliment for a person doing a plank exercise, based on how close the following percentage is to 100%. If the person has a percentage above 50%, compliment them. If they have a low percentage, insult them:\"" + String(score) + "%\"",
     temperature: 0.43,
     max_tokens: 256,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
   });
-
-  // console.log("Response is " + response.data.choices[0].text);
-
   return response.data.choices[0].text;
 }
 
-// "beach", ["cool", "clear sky", "edgy"]
-async function avgGenerator(keyword, tags) {
-  arrResponse = await respond(keyword, tags);
-
-  console.log(arrResponse);
-
-  return arrResponse;
-
-  // arrResponse.then(function(result) {
-  //   // console.log(result)
-  //   // console.log(typeof(result));
-  //   var final = parseInt(result);
-  //   console.log(final);
-  //   // console.log(typeof(final));
-  //   return final;
-  // })
-}
-
-console.log(avgGenerator("beach", ["cool", "clear sky", "edgy"]));
-
-module.exports = { respond };
+module.exports = { insult };
