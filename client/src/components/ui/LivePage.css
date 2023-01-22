@@ -1,8 +1,31 @@
 .tensorflow-container {
-    background-color: #398163;
-    width: 700px;
-    height: 580;
-    padding-left: 1.5%;
-    padding-top: 1%;
-    border-radius: 10px;
+  background-color: #398163;
+  width: 700px;
+  height: 580;
+  padding-left: 1.5%;
+  padding-top: 1%;
+  border-radius: 10px;
+}
+
+.begin-button-lp {
+  background-color: #0f0f0f;
+  color: #74c5a3;
+  border: 2px solid #74c5a3; /* Green */
+  border-radius: 10px;
+  width: 180px;
+  height: 55px;
+  font-size: 30px;
+  font-family: Numans;
+  transition-duration: 0.3s;
+  margin: 0px 50px 50px 0px;
+}
+
+.begin-button-lp:hover {
+  background-color: #74c5a3; /* Green */
+  color: white;
+}
+
+.key-buttons-lp {
+  display: inline-block;
+  align-items: center;
 }
