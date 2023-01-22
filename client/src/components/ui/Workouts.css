@@ -32,6 +32,13 @@
   padding: 15px;
   padding-left: 10px;
   transition: transform 0.15s;
+  font-family: Numans;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.primary-button-container:hover {
+  background-color: #bfe1c1;
 }
 
 .primary-button:active {
@@ -42,11 +49,12 @@ button:focus {
   outline: none;
 }
 
-.button:hover {
-  background-color: #bdd1be;
+.primary-button-div {
+  display: grid;
+  grid-template-columns: 1fr 20px;
 }
 
-button {
+/* button {
   background-color: #74c5a3;
   color: white;
   padding: 10px 60px;
@@ -55,4 +63,4 @@ button {
   cursor: pointer;
   font-family: Numans;
   text-align: left;
-}
+} */

@@ -11,19 +11,38 @@ export default function Workouts() {
       <div class="header">Workouts</div>
       <div class="primary-button-container">
         <button class="primary-button">
-          Full Body - 45 minutes, 9 exercises
+          <div class="primary-button-div">
+            Full Body - 45 minutes, 9 exercises
+            <img src=""></img>
+          </div>
         </button>
       </div>
+
       <div class="primary-button-container">
         <button class="primary-button">
-          Upper Body - 30 minutes, 6 exercises
+          <div class="primary-button-div">
+            Upper Body - 30 minutes, 6 exercises
+            <img src=""></img>
+          </div>
         </button>
       </div>
+
       <div class="primary-button-container">
-        <button class="primary-button">Core - 30 minutes, 15 exercises</button>
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Core - 30 minutes, 15 exercises
+            <img src=""></img>
+          </div>
+        </button>
       </div>
+
       <div class="primary-button-container">
-        <button class="primary-button">Cardio - 1 hour, 3 exercises</button>
+        <button class="primary-button">
+          <div class="primary-button-div">
+            Cardio - 1 hour, 3 exercises
+            <img src=""></img>
+          </div>
+        </button>
       </div>
     </div>
   );
