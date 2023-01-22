@@ -2,7 +2,7 @@ import React from "react";
 import "./EndPage.css";
 import { Link } from "react-router-dom";
 import icon from "./images/workouts.png";
-
+import config from "../tensorflow/config";
 export default function EndPage() {
   return (
     <div>
@@ -19,7 +19,7 @@ export default function EndPage() {
             </div>
 
             <div class="score-container-ep">
-              <button class="score-ep">Average Score: 95%</button>
+              <button class="score-ep">Average Score: 85.67%</button>
             </div>
 
             <div class="key-buttons-ep">
