@@ -6,6 +6,7 @@ export default function Exercises() {
   return (
     <div>
       <div class="header-e">Exercises</div>
+      <div class="primary-buttons-container-e">
       <div class="primary-button-container-e">
         <button class="primary-button-e">
           <div class="primary-button-div-e">Planks</div>
@@ -28,6 +29,7 @@ export default function Exercises() {
         <button class="primary-button-e">
           <div class="primary-button-div-e">Pushups</div>
         </button>
+      </div>
       </div>
     </div>
   );

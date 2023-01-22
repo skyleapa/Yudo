@@ -14,7 +14,7 @@ export default function Workouts() {
         <div class="primary-button-container-wo">
           <button class="primary-button-wo">
             <div class="primary-button-div-wo">
-              Full Body - 45 minutes
+              Full Body &#9472; 45 minutes
               <img class="poses-wo" src={full_body} />
             </div>
           </button>
@@ -25,7 +25,7 @@ export default function Workouts() {
         <div class="primary-button-container-wo">
           <button class="primary-button-wo">
             <div class="primary-button-div-wo">
-              Upper Body - 30 minutes
+              Upper Body &#9472; 30 minutes
               <img class="poses-wo" src={upper_body}></img>
             </div>
           </button>
@@ -36,7 +36,7 @@ export default function Workouts() {
         <div class="primary-button-container-wo">
           <button class="primary-button-wo">
             <div class="primary-button-div-wo">
-              Core - 30 minutes
+              Core &#9472; 30 minutes
               <img class="poses-wo" src={core}></img>
             </div>
           </button>
@@ -47,7 +47,7 @@ export default function Workouts() {
         <div class="primary-button-container-wo">
           <button class="primary-button-wo">
             <div class="primary-button-div-wo">
-              Cardio - 1 hour
+              Cardio &#9472; 1 hour
               <img class="poses-wo" src={cardio}></img>
             </div>
           </button>
