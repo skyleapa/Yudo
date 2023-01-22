@@ -141,7 +141,7 @@ const ScoringComponent = (live) => {
         const xDistance = rightPos2 - rightPos1
 
         // ADJUST
-        return xDistance < 90 ? false : true
+        return xDistance < 70 ? false : true
     }
 
     // return a score for the relative hip position
@@ -160,11 +160,11 @@ const ScoringComponent = (live) => {
 
         // ADJUST
         // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
-        if (footIndexScore < -20 || ankleScore < -50 || kneeScore < -50 || elbowScore < 0 || shoulderScore < -80 || shoulderScore > 85) {
+        if (footIndexScore < -50 || ankleScore < -50 || kneeScore < -50 || elbowScore < -20 || shoulderScore < -80 || shoulderScore > 85) {
             return 0
-        } else if (footIndexScore < -10 || ankleScore < -30 || kneeScore < -40 || elbowScore < 10 || shoulderScore < -65 || shoulderScore > 65) {                                                     
+        } else if (footIndexScore < -40 || ankleScore < -30 || kneeScore < -40 || elbowScore < -10 || shoulderScore < -65 || shoulderScore > 65) {                                                     
             return 1
-        } else if (footIndexScore < 0 || ankleScore < -10 || kneeScore < -30 || elbowScore < 20 || shoulderScore < -50 || shoulderScore > 50) {
+        } else if (footIndexScore < -30 || ankleScore < -10 || kneeScore < -30 || elbowScore < 0 || shoulderScore < -50 || shoulderScore > 50) {
             return 2
         } else {
             return 3
