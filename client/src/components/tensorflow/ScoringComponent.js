@@ -127,7 +127,7 @@ const ScoringComponent = (live) => {
 
         // only gets right positions
         for (let i = 0; i < rightPositions.length - 1; i++) {
-            if (calculateXDistance(rightPosition[i], rightPosition[i + 1])) {
+            if (calculateXDistance(rightPositions[i], rightPositions[i + 1])) {
                 continue
             } else {
                 return false
@@ -141,7 +141,7 @@ const ScoringComponent = (live) => {
         const xDistance = rightPos2 - rightPos1
 
         // ADJUST
-        return xDistance < 70 ? false : true
+        return xDistance < 90 ? false : true
     }
 
     // demoSlopes: an array containing the three ideal slopes of a plank
