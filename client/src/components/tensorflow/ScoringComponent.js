@@ -133,10 +133,10 @@ const ScoringComponent = (live) => {
                 return false
             }
         }
-
         return true
     }
 
+    // calculates the x distance between two positions and returns true if valid
     function calculateXDistance(rightPos1, rightPos2) {
         const xDistance = rightPos2 - rightPos1
 
@@ -144,12 +144,51 @@ const ScoringComponent = (live) => {
         return xDistance < 90 ? false : true
     }
 
+    // return a score for the relative hip position
+    // 0: bad
+    // 1: not good
+    // 2: could be better
+    // 3: good
+    function detectHipPosition(rightElbow, rightShoulder, rightHip, rightKnee, rightAnkle, rightFootIndex) {
+
+        const hipY = rightHip.y
+        const footIndexScore = hipY - rightFootIndex.y
+        const ankleScore = hipY - rightAnkle.y
+        const kneeScore = hipY - rightKnee.y
+        const shoulderScore = rightShoulder.y - hipY
+        const elbowScore = hipY - rightElbow.y
+
+        // ADJUST
+        // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
+        if (footIndexScore < 0 || ankleScore < -20 || kneeScore < -20 || elbowScore < 0 || shoulderScore < -60 || shoulderScore > 60) {
+            return 0
+        } else if (footIndexScore < 10 || ankleScore < 0 || kneeScore < 0 || elbowScore < 20 || shoulderScore < -45 || shoulderScore > 45) {                                                     
+            return 1
+        } else if (footIndexScore < 30 || ankleScore < 10 || kneeScore < 10 || elbowScore < 40 || shoulderScore < -30 || shoulderScore > 30) {
+            return 2
+        } else {
+            return 3
+        }
+    }
+
+    // finds how many positions are out of frame
+    function findOutOfFrame(positionData) {
+        let outOfFrame = 0
+        for (let i = 0; i < positionData.length; i++) {
+            const position = positionData[i];
+            if (position.score < 0.1) {
+                outOfFrame += 1
+            }
+        }
+        return outOfFrame
+    }
+
     // demoSlopes: an array containing the three ideal slopes of a plank
     // liveSlopes: an array containing the three slopes of the candidate
     // linedUpValue: a value that determines how lined up left and right positions are
     // CONSTRAINT: demoSlopes and liveSlopes must be the same length
     // returns: a score based on how closely the live slopes match the demo slopes
-    function calculateScores(demoSlopes, liveSlopes, linedUpValue) {
+    function calculateScores(demoSlopes, liveSlopes, linedUpValue, hipScore, outOfFrame) {
 
         let percentageDifference = []
         for (let i = 0; i < demoSlopes.length; i++) {
@@ -170,19 +209,25 @@ const ScoringComponent = (live) => {
 
         let finalScore = 0
 
-        // might need to adjust
-        if (linedUpValue < 50) {
+        // ADJUST
+        if (outOfFrame > 5) {
+            finalScore = (Math.random() * 20)
+        } else if (linedUpValue < 50) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
-        } else if (!ensureRelativePositioning) {
-            finalScore = (averageBeforeLinedUp * 0.3) + (Math.random() * 30 * 0.7)
+        } else if (!ensureRelativePositioning[rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive][rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive]) {
+            finalScore = (averageBeforeLinedUp * 0.2) + (Math.random() * 30 * 0.8)
+        } else if (hipScore === 0) {
+            finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
+        } else if (hipScore === 1) {
+            finalScore = (averageBeforeLinedUp * 0.4) + ((Math.random() * (50 - 30) + 30) * 0.6)
+        } else if (hipScore === 2) {
+            finalScore = (averageBeforeLinedUp * 0.7) + ((Math.random() * (80 - 50) + 50 * 0.3))
         } else {
-            finalScore = (averageBeforeLinedUp * 0.9) + (linedUpValue * 0.1)
+            finalScore = (averageBeforeLinedUp * 0.95) + (linedUpValue * 0.05)
         }
 
         return finalScore
     }
-
-
 
     // Testing
 
@@ -200,16 +245,18 @@ const ScoringComponent = (live) => {
         const rightAnkleLive = (live.keypoints[28], live.keypoints[28])
         const leftFootIndexLive = (live.keypoints[31], live.keypoints[31])
         const rightFootIndexLive = (live.keypoints[32], live.keypoints[32])
+
         const allPositionData = [leftElbowLive, rightElbowLive, leftShoulderLive, rightShoulderLive, leftHipLive, rightHipLive,     // contains 12 items
             leftKneeLive, rightKneeLive, leftAnkleLive, rightAnkleLive, leftFootIndexLive, rightFootIndexLive]
 
         // For Testing Score Calculations
-        const liveStats = findSlopes(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive);
-        const linedUpValue = linedUp(allPositionData);
-        const relativePlankPositionValue = ensureRelativePositioning([rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive])
+        const liveStats = findSlopes(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive)
+        const linedUpValue = linedUp(allPositionData)
+        const hipScore = detectHipPosition(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive)
         const demoAverage = average(demoDataSet)
+        const outOfFrame = findOutOfFrame(allPositionData)
         console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
-        return calculateScores(demoAverage, liveStats, linedUpValue);
+        return calculateScores(demoAverage, liveStats, linedUpValue, hipScore, outOfFrame)
     }
 }
 
