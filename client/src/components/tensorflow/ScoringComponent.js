@@ -188,7 +188,7 @@ const ScoringComponent = (live) => {
     // linedUpValue: a value that determines how lined up left and right positions are
     // CONSTRAINT: demoSlopes and liveSlopes must be the same length
     // returns: a score based on how closely the live slopes match the demo slopes
-    function calculateScores(demoSlopes, liveSlopes, linedUpValue, hipScore, outOfFrame) {
+    function calculateScores(demoSlopes, liveSlopes, linedUpValue, hipScore, outOfFrame, relativeRightPositions) {
 
         let percentageDifference = []
         for (let i = 0; i < demoSlopes.length; i++) {
@@ -214,14 +214,14 @@ const ScoringComponent = (live) => {
             finalScore = (Math.random() * 20)
         } else if (linedUpValue < 50) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
-        } else if (!ensureRelativePositioning[rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive][rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive]) {
+        } else if (!ensureRelativePositioning(relativeRightPositions)) {
             finalScore = (averageBeforeLinedUp * 0.2) + (Math.random() * 30 * 0.8)
         } else if (hipScore === 0) {
             finalScore = (averageBeforeLinedUp * 0.1) + (Math.random() * 30 * 0.9)
         } else if (hipScore === 1) {
             finalScore = (averageBeforeLinedUp * 0.4) + ((Math.random() * (50 - 30) + 30) * 0.6)
         } else if (hipScore === 2) {
-            finalScore = (averageBeforeLinedUp * 0.7) + ((Math.random() * (80 - 50) + 50 * 0.3))
+            finalScore = (averageBeforeLinedUp * 0.7) + ((Math.random() * (80 - 50) + 50) * 0.3)
         } else {
             finalScore = (averageBeforeLinedUp * 0.95) + (linedUpValue * 0.05)
         }
@@ -252,11 +252,12 @@ const ScoringComponent = (live) => {
         // For Testing Score Calculations
         const liveStats = findSlopes(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive)
         const linedUpValue = linedUp(allPositionData)
+        const relativeRightPositions = [rightAnkleLive, rightKneeLive, rightHipLive, rightShoulderLive]
         const hipScore = detectHipPosition(rightElbowLive, rightShoulderLive, rightHipLive, rightKneeLive, rightAnkleLive, rightFootIndexLive)
         const demoAverage = average(demoDataSet)
         const outOfFrame = findOutOfFrame(allPositionData)
         console.log("The score is: " + calculateScores(demoAverage, liveStats, linedUpValue))
-        return calculateScores(demoAverage, liveStats, linedUpValue, hipScore, outOfFrame)
+        return calculateScores(demoAverage, liveStats, linedUpValue, hipScore, outOfFrame, relativeRightPositions)
     }
 }
 
