@@ -1,6 +1,6 @@
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Nodes from './Nodes';
 import "./CameraStyle.css";
 import ScoringComponent from './ScoringComponent';
