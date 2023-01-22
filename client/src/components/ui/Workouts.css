@@ -1,4 +1,4 @@
-.header {
+.header-wo {
   font-family: Numans;
   color: #ffffff;
   text-align: left;
@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-.primary-button-container {
+.primary-button-container-wo {
   position: relative;
   display: block;
   left: 5px;
@@ -19,7 +19,7 @@
   box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
 }
 
-.primary-button {
+.primary-button-wo {
   display: block;
   height: 81px;
   width: 1164px;
@@ -38,11 +38,11 @@
   border-radius: 5px;
 }
 
-.primary-button-container:hover {
+.primary-button-container-wo:hover {
   background-color: #bfe1c1;
 }
 
-.primary-button:active {
+.primary-button-wo:active {
   transform: translateY(8px) translateX(9px);
 }
 
@@ -50,15 +50,29 @@ button:focus {
   outline: none;
 }
 
-.primary-button-div {
+.primary-button-div-wo {
   display: grid;
   grid-template-columns: 380px 40px;
   align-items: center;
+  font-size: 25px;
 }
 
-.poses {
+.poses-wo {
   object-fit: cover;
   float: right;
   width: 40px;
   margin-left: 710px;
+}
+
+.begin-button-wo {
+  margin-left: 0;
+  background-color: #0f0f0f;
+  color: #74c5a3;
+  border: 2px solid #74c5a3; /* Green */
+  border-radius: 10px;
+  width: 180px;
+  height: 55px;
+  font-size: 30px;
+  font-family: Numans;
+  transition-duration: 0.3s;
 }
