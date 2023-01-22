@@ -32,6 +32,8 @@ export default function WorkoutList() {
         </div>
       </div>
 
+      {/* <div class="list-wol">Plank - 30 Seconds</div> */}
+
       <div class="primary-buttons-wol">
         <div class="primary-button-container-wol">
           <button class="primary-button-wol">
