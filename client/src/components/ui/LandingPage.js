@@ -10,10 +10,10 @@ export default function LandingPage() {
       backgroundImage: `url(${wave})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "bottom bottom",
+      backgroundPosition: "center center",
       height: "100vh",
       width: "100vw",
-      backgroundPositionY: "-250px",
+      // backgroundPositionY: "-250px",
     },
   };
 
