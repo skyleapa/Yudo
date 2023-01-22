@@ -1,0 +1,112 @@
+.begin-button-ep {
+  background-color: #ffffff;
+  color: #74c5a3;
+  border: 2px solid #74c5a3; /* Green */
+  border-radius: 10px;
+  width: 180px;
+  height: 55px;
+  font-size: 30px;
+  font-family: Numans;
+  transition-duration: 0.3s;
+  margin: 10px 50px 70px 0px;
+}
+
+.begin-button-ep:hover {
+  background-color: #74c5a3; /* Green */
+  color: white;
+}
+
+.key-buttons-ep {
+  display: inline-block;
+  align-items: center;
+  margin-left: 50px;
+  margin-top: 40px;
+  /* margin: 50px 30px 80px 0px; */
+}
+
+.middle-ep {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-description-ep {
+  margin-top: 0;
+}
+
+.modified-container-ep {
+  position: relative;
+  display: block;
+  left: 5px;
+  width: 480px;
+  height: 510px;
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #74c5a3;
+  border-radius: 10px;
+  box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
+}
+
+.modified-button-ep {
+  display: block;
+  height: 540px;
+  width: 500px;
+  background-color: #ffffff;
+  border: solid #ffffff;
+  border-width: 0 10px;
+  color: #398163;
+  font-size: 20px;
+  margin: -37px 0px -25px -37px;
+  padding: 15px;
+  /* padding-left: 10px; */
+  transition: transform 0.15s;
+  transition: background-color 0.15s;
+  font-family: Numans;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.title-ep {
+  font-family: Numans;
+  font-size: 45px;
+  text-align: center;
+}
+
+.yudo-ep {
+  width: 480px;
+  height: 630px;
+}
+
+.score-container-ep {
+  position: relative;
+  display: block;
+  left: 62px;
+  width: 250px;
+  height: 40px;
+  margin-top: 80px;
+  padding: 30px;
+  background-color: #398163;
+  border-radius: 10px;
+  box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
+}
+
+.score-ep {
+  display: block;
+  height: 90px;
+  width: 300px;
+  background-color: #74c5a3;
+  border: solid #74c5a3;
+  border-width: 0 10px;
+  color: #ffffff;
+  font-size: 20px;
+  margin: -37px 0px -25px -37px;
+  padding: 15px;
+  padding-left: 30px;
+  transition: transform 0.15s;
+  transition: background-color 0.15s;
+  font-family: Numans;
+  text-align: left;
+  border-radius: 10px;
+}

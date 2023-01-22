@@ -9,7 +9,7 @@ export default function DemoPage() {
       <div class="header-dp">Demonstration</div>
 
       <div class="middle-dp">
-        <div class="video-dp">
+        <div>
           <div className="DemoPage">
             <YoutubeEmbed embedId="pvIjsG5Svck" />
           </div>
