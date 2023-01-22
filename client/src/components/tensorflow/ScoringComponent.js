@@ -160,11 +160,11 @@ const ScoringComponent = (live) => {
 
         // ADJUST
         // hip lower than toes, ankle, knees, or elbows, or hips way higher or lower than shoulders
-        if (footIndexScore < 0 || ankleScore < -20 || kneeScore < -20 || elbowScore < 0 || shoulderScore < -60 || shoulderScore > 60) {
+        if (footIndexScore < -20 || ankleScore < -50 || kneeScore < -50 || elbowScore < 0 || shoulderScore < -80 || shoulderScore > 85) {
             return 0
-        } else if (footIndexScore < 10 || ankleScore < 0 || kneeScore < 0 || elbowScore < 20 || shoulderScore < -45 || shoulderScore > 45) {                                                     
+        } else if (footIndexScore < -10 || ankleScore < -30 || kneeScore < -40 || elbowScore < 10 || shoulderScore < -65 || shoulderScore > 65) {                                                     
             return 1
-        } else if (footIndexScore < 30 || ankleScore < 10 || kneeScore < 10 || elbowScore < 40 || shoulderScore < -30 || shoulderScore > 30) {
+        } else if (footIndexScore < 0 || ankleScore < -10 || kneeScore < -30 || elbowScore < 20 || shoulderScore < -50 || shoulderScore > 50) {
             return 2
         } else {
             return 3
