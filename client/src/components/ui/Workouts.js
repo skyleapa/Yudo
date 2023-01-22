@@ -10,16 +10,16 @@ export default function Workouts() {
   return (
     <div>
       <div class="header">Workouts</div>
-      <div class="primary-button-container">
-        <Link to="/workoutlist">
+      <Link to="/workoutlists">
+        <div class="primary-button-container">
           <button class="primary-button">
             <div class="primary-button-div">
               Full Body - 45 minutes
               <img class="poses" src={full_body} />
             </div>
           </button>
-        </Link>
-      </div>
+        </div>
+      </Link>
 
       <div class="primary-button-container">
         <button class="primary-button">
