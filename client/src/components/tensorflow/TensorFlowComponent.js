@@ -61,8 +61,9 @@ const TensorFlowComponent = () => {
             let normalizedKeys = poseDetection.calculators.keypointsToNormalizedKeypoints(poses, webcamVideo.current);
 
             //console.log(poses[0]);
-            setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
-
+            if (normalizedKeys[0]) {
+                setScore(ScoringComponent(normalizedKeys[0]).toFixed(2));
+            }
             ctx.clearRect(0, 0, 640, 480);
 
             if (poses[0]) {
