@@ -1,6 +1,6 @@
 # nwHacks2023 **1st place** 🏆
 
-Presenting Yudo! Our approach to innovating exercise with technology.
+Presenting Yudo! Our approach to innovating exercise with technology. Uses a custom-developed exercise detection algorithm, self-created datasets, TensorFlow AI, and Chat-GPT3 to help users improve their form and state relative accuracy score, feedback, and compliments/criticisms while doing various exercises. 
 
 ## Inspiration
 Since the pandemic, millions of people worldwide have turned to online alternatives to replace public fitness facilities and other physical activities. At-home exercises have become widely acknowledged, and are even prescribed by physiotherapists (like the one who judged us in the competition!) but the problem is that there is no way of telling whether people are doing the exercises accurately and whether they notice potentially physically damaging bad habits they may have developed. Even now, those habits may continuously affect and damage their bodies if left unnoticed. That is why we created **Yudo**.
