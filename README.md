@@ -1,4 +1,4 @@
-# nwHacks2023
+# nwHacks2023 **1st place** 🏆
 
 Presenting Yudo! Our approach to innovating exercise with technology.
 
