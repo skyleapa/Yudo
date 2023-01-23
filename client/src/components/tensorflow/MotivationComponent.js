@@ -50,13 +50,13 @@ const MotivationComponent = (parentScore) => {
                 <img class="speakerphone-lp" src={speakerphone} />
 
                 <div class="primary-button-container-lp">
-                <button class="primary-button-lp">
-                    <div class="primary-button-div-lp">CHAT-GPT3: {insultText}</div>
-                </button>
+                    <button class="primary-button-lp">
+                        <div class="primary-button-div-lp">CHAT-GPT3: {insultText}</div>
+                    </button>
                 </div>
-                <button class="" onClick={() => {
-                onFinish()}}>
-                Get Results
+                <button class="poopoo" onClick={() => {
+                    onFinish()}}>
+                    Get Feedback
                 </button>
             </div>
             
