@@ -10,11 +10,7 @@ import head from "./images/head.png";
 export default function LivePage() {
   return (
     <div>
-      <div class="help">
-      <div class="header-lp">
-        
-        </div>
-
+      <div>
         <div>
           <div className="LivePage">
             <TensorFlowComponent />

@@ -87,17 +87,20 @@ const TensorFlowComponent = () => {
                 </div>
             </div>
         
-            <div class="modified-container-lp">
-            <button class="modified-button-lp">
-            <div class="title-description-dp">
-              Score: {score}
-            </div>
-            <button onClick={() => startStream()}>
+            <div class="arg">
+                <div class="modified-container-lp">
+                    <button class="modified-button-lp">
+                        <div class="title-description-dp">
+                        Score: {score}
+                        </div>
+                    </button>
+                </div>
+
+                <button class = "peepee" onClick={() => startStream()}>
                     Start webcam
-            </button>
-            </button>
+                </button>
             </div>
-            <MotivationComponent parentScore={score} scoreArray={scoreArray} />
+            <MotivationComponent parentScore={score} />
         </>
     );
 }
