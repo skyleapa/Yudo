@@ -12,7 +12,7 @@ import EndPage from "./components/ui/EndPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">`
       <Router>
         <NavigationBar />
         <header className="App-header">

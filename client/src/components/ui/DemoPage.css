@@ -61,18 +61,18 @@
 }
 
 .title-dp {
-  font-family: Numans;
+  font-family: Numans, serif;
   font-size: 30px;
   text-align: center;
 }
 
 .ul-dp {
-  font-family: Numans;
+  font-family: Numans, serif;
   font-size: 20px;
 }
 
 .ul-dp-div {
-  font-family: Numans;
+  font-family: Numans, serif;
   font-size: 20px;
   margin-top: -5px;
 }
@@ -91,24 +91,13 @@
   padding: 30px;
   background-color: #398163;
   border-radius: 5px;
-  box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);
+  /*box-shadow: 0 0 8px 0 398163 (0, 0, 0, 0.25);*/
 }
 
 .modified-button-dp {
   display: block;
   height: 300px;
-  width: 250px;
-  background-color: #74c5a3;
-  border: solid #74c5a3;
-  border-width: 0 10px;
-  color: #ffffff;
-  font-size: 20px;
-  margin: -37px 0px -25px -37px;
-  padding: 15px;
-  padding-left: 10px;
-  transition: transform 0.15s;
-  transition: background-color 0.15s;
-  font-family: Numans;
+  font-family: Numans, serif;
   text-align: left;
   border-radius: 5px;
 }
